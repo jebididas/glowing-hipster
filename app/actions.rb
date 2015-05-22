@@ -6,6 +6,7 @@ end
 post '/plusones/new' do 
   erb :'plusones/new'
 end
+
 post '/' do
   @user = User.create(
     username: params[:username],
