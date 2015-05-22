@@ -1,0 +1,42 @@
+html {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+body{
+  background-image: url("../images/index-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 100%;
+  min-width: 100%;
+  background-attachment: fixed;
+}
+
+#index-hdr {
+  color: whitesmoke;
+  font-size: 2em;
+  float: right;
+  padding-right: 12%;
+  padding-bottom: 1%;
+}
+
+
+.input-group-box {
+  width: 40%;
+  float: right;
+  padding-right: 10%;
+}
+
+#index-intro {
+  color: whitesmoke;
+  font-size: 1.2em;
+  padding-top: 2%;
+}
+
+#login {
+  width: 20%;
+}
+
+
+

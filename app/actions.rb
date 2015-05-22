@@ -1,3 +1,9 @@
+helpers do
+  def current_user
+    @current_user ||= User.find session[:user_id] if session[:user_id]
+  end
+end
+
 # Homepage (Root path)
 get '/' do
   erb :index
@@ -7,7 +13,7 @@ post '/plusones/new' do
   erb :'plusones/new'
 end
 
-post '/' do
+post '/' do # Register new user
   @user = User.create(
     username: params[:username],
     password: params[:password],
@@ -17,7 +23,26 @@ post '/' do
     session[:user_id] = @user.id
     redirect '/'
   else
-    erb :'user/new'
+    erb :'index'
   end
+end
+
+get '/login' do
+  erb :'login'
+end
+
+post '/login' do
+  @user = User.find_by username: params[:username]
+  if @user
+    if params[:password] == @user.password
+      session[:user_id] = @user.id
+    end
+  end
+  redirect '/'
+end
+
+get '/logout' do
+  session.delete :user_id
+  redirect '/'
 end
 
