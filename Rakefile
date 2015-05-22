@@ -20,3 +20,11 @@ desc 'Retrieves the current schema version number'
 task "db:version" do
   puts "Current version: #{ActiveRecord::Migrator.current_version}"
 end
+
+desc "populate the database with dummy data"
+task "db:populate" do
+  User.create(username: 'Jody', email: 'jody@gmail.com', password: 'pass')
+  User.create(username: 'Raymond', email: 'raymond@gmail.com', password: 'ray')
+  User.create(username: 'Matt', email: 'matt@gmail.com', password: 'matt')
+  User.create(username: 'Monica', eamil: 'monica@gmail.com', password: 'monica')
+end
