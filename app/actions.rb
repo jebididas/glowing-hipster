@@ -35,11 +35,17 @@ post '/login' do
     end
   end
   redirect '/'
+  # redirect '/user/:id'
 end
 
 get '/logout' do
   session.delete :user_id
   redirect '/'
+end
+
+get '/user/:id' do
+  @user = User.find params[:id]
+  erb :'users/summary'  
 end
 
 get '/plusones/new' do
