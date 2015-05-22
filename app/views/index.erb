@@ -1,22 +1,31 @@
-<h1>Home Page</h1>
+<% @body_class = "index" %>
 <br>
-<form method="post" action="/">
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-    <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-  </div>
-  <br>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></span>
-    <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
-  </div>
-  <br>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-    <input type="text" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
-  </div> 
-  <br>
+<div class="input-group-box">
+  <h1 id="index-hdr">Welcome, to +1 Health!</h1>
+  <form method="post" action="/">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+      <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></span>
+      <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+      <input type="text" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+    </div> 
+    <br>
+    <span class="input-group-btn">
+      <button class="btn btn-primary" id="index-register-button" type="submit">Register</button>
+    </span>
+  </form>
+  <p id="index-intro"> Create a FREE profile at +1 Health today, to help you become the healthy person you want to be!  If you are already a member Login here!</p>
   <span class="input-group-btn">
-    <button class="btn btn-default" type="submit">Register</button>
+    <button class="btn btn-primary" id="index-login-button" type="submit">Login</button>
   </span>
-</form>
+</div>
+
+

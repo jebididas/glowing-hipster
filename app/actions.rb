@@ -9,10 +9,6 @@ get '/' do
   erb :index
 end
 
-post '/plusones/new' do 
-  erb :'plusones/new'
-end
-
 post '/' do # Register new user
   @user = User.create(
     username: params[:username],
@@ -51,3 +47,21 @@ get '/user/:id' do
   @user = User.find params[:id]
   erb :'users/summary'  
 end
+
+get '/plusones/new' do
+  erb :'/plusones/new'
+end
+
+post '/plusones/new' do
+  @plusone = Plusone.create(
+    score: params[:score],
+    user_id: current_user.id)
+  if @plusone.save
+    redirect '/'
+  end
+end
+
+get '/edit' do
+  erb :'edit'
+end
+
