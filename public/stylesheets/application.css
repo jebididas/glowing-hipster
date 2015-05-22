@@ -3,3 +3,20 @@
   padding: 15px;
   margin: 0 auto;
 }
+
+.new-plusone {
+  max-width: 300px;
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.new-score {
+  max-width:100px;
+  text-align: center;
+  margin: auto;
+}
+
+.main-color {
+  color: royalblue;
+}
