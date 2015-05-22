@@ -1,21 +1,8 @@
-<br>
-<form method="post" action="/songs">
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-cd" aria-hidden="true"></span></span>
-    <input type="text" name="title" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
-  </div>
-  <br>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span></span>
-    <input type="text" name="author" class="form-control" placeholder="Author" aria-describedby="basic-addon1">
-  </div>  
-  <br>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></span>
-    <input type="text" name="url" class="form-control" placeholder="URL" aria-describedby="basic-addon1">
-  </div> 
-  <br>
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="submit">Add!</button>
-  </span>
-</form>
+<div class="new-plusone">
+  <h2>Add <span class="main-color">+1</span> for <%= Date.today.strftime("%A") %></h2>
+  <form method="post" action="/plusones/new">
+    <input type="number" name="score" class="form-control new-score" placeholder="Score" aria-describedby="basic-addon1">
+    <br>
+    <button class="btn btn-default" type="submit">Submit!</button>
+  </form>
+</div>

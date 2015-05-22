@@ -9,10 +9,6 @@ get '/' do
   erb :index
 end
 
-post '/plusones/new' do 
-  erb :'plusones/new'
-end
-
 post '/' do # Register new user
   @user = User.create(
     username: params[:username],
@@ -44,5 +40,18 @@ end
 get '/logout' do
   session.delete :user_id
   redirect '/'
+end
+
+get '/plusones/new' do
+  erb :'/plusones/new'
+end
+
+post '/plusones/new' do
+  @plusone = Plusone.create(
+    score: params[:score],
+    user_id: current_user.id)
+  if @plusone.save
+    redirect '/'
+  end
 end
 
