@@ -1,6 +1,7 @@
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
+  max-width: 35%;
+  padding: 5%;
+  padding-top: 15%;
   margin: 0 auto;
 }
 
@@ -19,4 +20,8 @@
 
 .main-color {
   color: royalblue;
+}
+
+.navbar-brand {
+  font-family: Amita;
 }

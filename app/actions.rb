@@ -55,3 +55,7 @@ post '/plusones/new' do
   end
 end
 
+get '/edit' do
+  erb :'edit'
+end
+
