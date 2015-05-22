@@ -39,6 +39,7 @@ post '/login' do
     end
   end
   redirect '/'
+  # redirect '/user/:id'
 end
 
 get '/logout' do
@@ -46,3 +47,7 @@ get '/logout' do
   redirect '/'
 end
 
+get '/user/:id' do
+  @user = User.find params[:id]
+  erb :'users/summary'  
+end

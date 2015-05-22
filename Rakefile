@@ -1,6 +1,7 @@
 require 'rake'
 require "sinatra/activerecord/rake"
 require ::File.expand_path('../config/environment', __FILE__)
+require_relative 'lib/plusones_importer'
 
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
@@ -19,4 +20,9 @@ end
 desc 'Retrieves the current schema version number'
 task "db:version" do
   puts "Current version: #{ActiveRecord::Migrator.current_version}"
+end
+
+desc "populate the test database with sample data"
+task "db:populate" do
+  PlusonesImporter.new.import
 end

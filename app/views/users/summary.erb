@@ -1,0 +1,18 @@
+<h1>Summary Page</h1>
+<br>
+
+<p> <%= @user.username %> </p>
+<table border="1">
+    <tr>
+      <th> Date </th>
+      <% @user.plusones.each do |score|%>
+        <th style="Padding: 5px"> <%= score.created_at.day.to_s %> </th>
+      <% end %>
+    </tr>
+    <tr>
+      <td> </td>
+      <% @user.plusones.each do |score|%>
+        <td style="Padding: 5px"> <%= score.score.to_s %> </td>
+      <% end %>
+    </tr>
+</table>
