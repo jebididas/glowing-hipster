@@ -35,36 +35,53 @@ body.edit {
 body.new {
   background-image: url("../images/new-plusone-image.jpg");
 }
-
+/*
 body.results {
   background-image: url("../images/results-image.jpg");
-}
+}*/
 
 /*>>>>> styling for the index page <<<<<*/
 
 #index-hdr {
   color: whitesmoke;
-  font-size: 2em;
+  font-size: 1.75em;
   float: right;
   margin-right: 12%;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
 }
 
 
 .input-group-box {
-  width: 40%;
+  width: 330px;
   float: right;
-  padding-right: 10%;
+  margin-right: 8%;
+}
+
+#index-username {
+  width: 290px;
+}
+
+#index-password {
+  width: 290px;
+}
+
+#index-email {
+  width: 290px;
 }
 
 #index-intro {
   color: whitesmoke;
   font-size: 1.2em;
   margin-top: 2%;
+  width: 330px;
 }
 
 #index-login-button {
-  width: 20%;
+  width: 330px;
+}
+
+#index-register-button {
+  width: 330px;
 }
 
 /*>>>>> style for the login page <<<<<*/
@@ -75,7 +92,7 @@ body.results {
 }
 
 .form-signin {
-  max-width: 35%;
+  width: 350px;
   padding: 5%;
   padding-top: 15%;
   margin: 0 auto;
@@ -84,34 +101,35 @@ body.results {
 /*>>>>> style for the edit page <<<<<*/
 
 #edit-form {
-  margin-left: 15%;
-  width: 25%;
+  margin-left: 10%;
+  width: 330px;
 }
 
 #avatar-hdr {
-  margin-left: 15%;
+  margin-left: 10%;
   color: whitesmoke;
   margin-bottom: 1%;
 }
 
 #edit-hdr {
   color: whitesmoke;
-  margin-left: 21.5%;
+  margin-left: 10%;
   margin-top: 7%;
 }
 
 #edit-avatar-info {
   color: whitesmoke;
-  margin-left: 15%;
+  margin-left: 10%;
   font-size: 1.1em;
 }
 
 #edit-form-button {
-  margin-left: 15%;
+  margin-left: 10%;
+  width: 330px;
 }
 
 #choose-file-btn {
-  margin-left: 15%;
+  margin-left: 10%;
   margin-bottom: 1%;
 }
 
@@ -149,14 +167,14 @@ body.results {
 }
 
 #new-plusone-btn {
-  width: 30%;
-  margin-top: 1%;
+  width: 376px;
+  margin: 0.5% auto;
 }
 
 #new-plusone-textarea {
-  width: 30%;
-  margin-left: 35%;
-  margin-top: 1%;
+  width: 376px;
+  /*margin-left: 35%;*/
+  margin: 0.5% auto;
 }
 
 
