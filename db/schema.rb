@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150523200057) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.date     "date"
+    t.date     "p_date"
   end
 
   create_table "teams", force: true do |t|
