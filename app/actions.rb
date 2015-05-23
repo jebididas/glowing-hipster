@@ -45,6 +45,7 @@ end
 
 get '/user/:id' do
   @user = User.find params[:id]
+  @plusones = @user.plusones
   erb :'users/summary'  
 end
 
@@ -56,7 +57,10 @@ post '/plusones/new' do
   @plusone = Plusone.create(
     score: params[:score],
     user_id: current_user.id)
-  if @plusone.save
+  @activity = Activity.create(
+    description: params[:description],
+    plusone_id: @plusone.id)
+  if @plusone.save && @activity.save
     redirect '/'
   end
 end
