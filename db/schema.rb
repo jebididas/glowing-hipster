@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522151053) do
+ActiveRecord::Schema.define(version: 20150522152434) do
+
+  create_table "activities", force: true do |t|
+    t.string   "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "plusone_id"
+  end
+
+  add_index "activities", ["plusone_id"], name: "index_activities_on_plusone_id"
 
   create_table "cohorts", force: true do |t|
     t.string  "name"
