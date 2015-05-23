@@ -35,11 +35,17 @@ post '/login' do
     end
   end
   redirect '/'
+  # redirect '/user/:id'
 end
 
 get '/logout' do
   session.delete :user_id
   redirect '/'
+end
+
+get '/user/:id' do
+  @user = User.find params[:id]
+  erb :'users/summary'  
 end
 
 get '/plusones/new' do
@@ -51,8 +57,12 @@ post '/plusones/new' do
     score: params[:score],
     user_id: current_user.id)
   if @plusone.save
-    redirect '/'
+    redirect '/plusones'
   end
+end
+
+get '/plusones' do
+  erb :'/plusones/index'
 end
 
 get '/edit' do
