@@ -6,7 +6,7 @@ end
 
 # Homepage (Root path)
 get '/' do
-  erb :index
+  erb :'index'
 end
 
 post '/' do # Register new user
