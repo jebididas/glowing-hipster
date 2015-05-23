@@ -2,6 +2,9 @@ helpers do
   def current_user
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
+  def current_day
+    @current_day = Date.today
+  end
 end
 
 # Homepage (Root path)
@@ -56,12 +59,15 @@ end
 post '/plusones/new' do
   @plusone = Plusone.create(
     score: params[:score].to_i,
-    user_id: current_user.id)
+    user_id: current_user.id,
+    p_date: current_day)
   @activity = Activity.create(
     description: params[:description],
     plusone_id: @plusone.id)
   if @plusone.save && @activity.save
     redirect '/plusones'
+  else
+    redirect '/plusones/new'
   end
 end
 
