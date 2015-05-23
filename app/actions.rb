@@ -57,8 +57,12 @@ post '/plusones/new' do
     score: params[:score],
     user_id: current_user.id)
   if @plusone.save
-    redirect '/'
+    redirect '/plusones'
   end
+end
+
+get '/plusones' do
+  erb :'/plusones/index'
 end
 
 get '/edit' do
