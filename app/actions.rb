@@ -55,7 +55,7 @@ end
 
 post '/plusones/new' do
   @plusone = Plusone.create(
-    score: params[:score],
+    score: params[:score].to_i,
     user_id: current_user.id)
   @activity = Activity.create(
     description: params[:description],
@@ -66,7 +66,11 @@ post '/plusones/new' do
 end
 
 get '/plusones' do
-  erb :'/plusones/index'
+  if current_user
+    erb :'/plusones/index'
+  else
+    redirect '/login'
+  end
 end
 
 get '/edit' do
