@@ -1,26 +1,4 @@
-.form-signin {
-  max-width: 35%;
-  padding: 5%;
-  padding-top: 15%;
-  margin: 0 auto;
-}
 
-.new-plusone {
-  max-width: 300px;
-  padding: 15px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.new-score {
-  max-width:100px;
-  text-align: center;
-  margin: auto;
-}
-
-.main-color {
-  color: royalblue;
-}
 
 .navbar-brand {
   font-family: Amita;
@@ -52,6 +30,14 @@ body.login {
 
 body.edit {
   background-image: url("../images/edit-image.jpg");
+}
+
+body.new {
+  background-image: url("../images/new-plusone-image.jpg");
+}
+
+body.results {
+  background-image: url("../images/results-image.jpg");
 }
 
 /*>>>>> styling for the index page <<<<<*/
@@ -86,6 +72,13 @@ body.edit {
 #login-hdr {
   color: whitesmoke;
   text-align: center;
+}
+
+.form-signin {
+  max-width: 35%;
+  padding: 5%;
+  padding-top: 15%;
+  margin: 0 auto;
 }
 
 /*>>>>> style for the edit page <<<<<*/
@@ -130,6 +123,41 @@ body.edit {
   margin-right: 5%;
 }
 
+/*>>>>> styling for the new plusone page <<<<<*/
+
+.new-plusone {
+  margin-top: 5%;
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: .2em 0 0;
+}
+
+#new-hdr {
+  color: whitesmoke
+}
+
+.main-color {
+  color: royalblue;
+}
+
+.new-score {
+  max-width:100px;
+  text-align: center;
+  margin: auto;
+}
+
+#new-plusone-btn {
+  width: 30%;
+  margin-top: 1%;
+}
+
+#new-plusone-textarea {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 1%;
+}
 
 
 
