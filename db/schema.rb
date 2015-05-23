@@ -21,11 +21,21 @@ ActiveRecord::Schema.define(version: 20150522152434) do
 
   add_index "activities", ["plusone_id"], name: "index_activities_on_plusone_id"
 
+  create_table "cohorts", force: true do |t|
+    t.string  "name"
+    t.boolean "public", default: false
+  end
+
   create_table "plusones", force: true do |t|
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string  "name"
+    t.integer "cohort_id"
   end
 
   create_table "users", force: true do |t|

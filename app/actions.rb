@@ -61,11 +61,17 @@ post '/plusones/new' do
     description: params[:description],
     plusone_id: @plusone.id)
   if @plusone.save && @activity.save
-    redirect '/'
+    redirect '/plusones'
   end
+end
+
+get '/plusones' do
+  erb :'/plusones/index'
 end
 
 get '/edit' do
   erb :'edit'
 end
+
+
 

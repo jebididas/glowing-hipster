@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
             uniqueness: true
   validates :password, 
             presence: true
+
+  def total_score
+    plusones.inject(0){ |sum, p| sum + p.score }
+  end
+
 end

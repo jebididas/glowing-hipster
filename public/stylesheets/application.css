@@ -25,3 +25,113 @@
 .navbar-brand {
   font-family: Amita;
 }
+
+/*>>>>> background image styling <<<<<*/
+
+html {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+body{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 100%;
+  min-width: 100%;
+  background-attachment: fixed;
+}
+
+body.index {
+  background-image: url("../images/index-image.jpg");
+}
+
+body.login {
+  background-image: url("../images/login-image.jpg");
+}
+
+body.edit {
+  background-image: url("../images/edit-image.jpg");
+}
+
+/*>>>>> styling for the index page <<<<<*/
+
+#index-hdr {
+  color: whitesmoke;
+  font-size: 2em;
+  float: right;
+  margin-right: 12%;
+  margin-bottom: 3%;
+}
+
+
+.input-group-box {
+  width: 40%;
+  float: right;
+  padding-right: 10%;
+}
+
+#index-intro {
+  color: whitesmoke;
+  font-size: 1.2em;
+  margin-top: 2%;
+}
+
+#index-login-button {
+  width: 20%;
+}
+
+/*>>>>> style for the login page <<<<<*/
+
+#login-hdr {
+  color: whitesmoke;
+  text-align: center;
+}
+
+/*>>>>> style for the edit page <<<<<*/
+
+#edit-form {
+  margin-left: 15%;
+  width: 25%;
+}
+
+#avatar-hdr {
+  margin-left: 15%;
+  color: whitesmoke;
+  margin-bottom: 1%;
+}
+
+#edit-hdr {
+  color: whitesmoke;
+  margin-left: 21.5%;
+  margin-top: 7%;
+}
+
+#edit-avatar-info {
+  color: whitesmoke;
+  margin-left: 15%;
+  font-size: 1.1em;
+}
+
+#edit-form-button {
+  margin-left: 15%;
+}
+
+#choose-file-btn {
+  margin-left: 15%;
+  margin-bottom: 1%;
+}
+
+/*>>>>> styling for the users results table <<<<<*/
+
+#table-style {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
+
+
+
+
