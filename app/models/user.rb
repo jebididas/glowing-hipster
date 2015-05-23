@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
     plusones.inject(0){ |sum, p| sum + p.score }
   end
 
+  def plusones_sorted_by_time(date)
+    Plusone.where("date = '#{date}'").order(:created_at)
+end
+
+
 end

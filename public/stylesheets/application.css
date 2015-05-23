@@ -175,6 +175,7 @@ body.results {
   width: 376px;
   /*margin-left: 35%;*/
   margin: 0.5% auto;
+  resize: none;
 }
 
 

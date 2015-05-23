@@ -73,5 +73,23 @@ get '/edit' do
   erb :'edit'
 end
 
+get '/plusones/update' do
+  @user = User.find 1 # will be changed later
+  @plusones = @user.plusones
+  erb :'/plusones/update'
+end
+
+post '/plusones/update' do
+
+  @plusone = Plusone.create(
+    score: params[:score],
+    user_id: current_user.id)
+  @activity = Activity.create(
+    description: params[:description],
+    plusone_id: @plusone.id)
+  if @plusone.save && @activity.save
+    redirect '/plusones'
+  end
+end
 
 
