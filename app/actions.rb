@@ -3,6 +3,8 @@ helpers do
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
 
+
+
   def current_date
     (Time.now + Time.zone_offset('PDT')).to_date
   end
@@ -51,10 +53,10 @@ get '/logout' do
   redirect '/'
 end
 
-get '/users/:id' do
-  @user = User.find params[:id]
-  erb :'users/summary'  
-end
+# get '/users/:id' do
+#   @user = User.find params[:id]
+#   erb :'users/summary'  
+# end
 
 get '/plusones/new' do
   erb :'/plusones/new'
@@ -89,8 +91,24 @@ get '/plusones/:date' do
   erb :'/plusones/show'
 end
 
-get '/edit' do
+get '/users/edit' do
   erb :'edit'
+end
+
+post '/users/edit' do
+  if current_user
+    current_user.update(
+      username: params[:username],
+      email: params[:email],
+      password: params[:password])
+    if current_user.save
+      redirect '/'
+    else
+      redirect '/users/edit'
+    end
+  else
+    redirect '/login'
+  end
 end
 
 get '/plusones/update' do
