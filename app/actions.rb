@@ -4,7 +4,7 @@ helpers do
   end
 
   def current_date
-    (Time.now + Time.zone_offset('PST')).to_date
+    (Time.now + Time.zone_offset('PDT')).to_date
   end
 
   def current_week
@@ -123,7 +123,12 @@ post '/cohorts/new' do
     admin: current_user.id)
   @enrollment = Enrollment.create(
     user_id: current_user.id,
-    cohort_id: @cohort.id)
+    cohort_id: @cohort.id,
+    enrollment_date: current_date)
   redirect '/' if @cohort.save && @enrollment.save
 end
 
+get '/cohorts/:id/index' do
+  @cohort = Cohort.find params[:id]
+  erb :'cohorts/index'  
+end
