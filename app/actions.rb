@@ -51,10 +51,10 @@ get '/logout' do
   redirect '/'
 end
 
-get '/users/:id' do
-  @user = User.find params[:id]
-  erb :'users/summary'  
-end
+# get '/users/:id' do
+#   @user = User.find params[:id]
+#   erb :'users/summary'  
+# end
 
 get '/plusones/new' do
   erb :'/plusones/new'
@@ -89,8 +89,40 @@ get '/users/:id/plusones/:date' do
   erb :'/plusones/show'
 end
 
-get '/edit' do
-  erb :'edit'
+get '/users/edit' do
+  erb :'/users/edit'
+end
+
+get '/users/upload' do
+  if current_user
+    erb :'/users/upload'
+  else
+    redirect '/login'
+  end
+end
+
+post "/users/upload" do 
+  File.open("public/images/users/#{current_user.id}/" + "default-user.png", "w") do |f|
+    f.write(params[:myfile][:tempfile].read)
+  end
+  redirect '/users/edit'
+end
+
+
+post '/users/edit' do
+  if current_user
+    current_user.update(
+      username: params[:username],
+      email: params[:email],
+      password: params[:password])
+    if current_user.save
+      redirect '/'
+    else
+      redirect '/users/edit'
+    end
+  else
+    redirect '/login'
+  end
 end
 
 get '/plusones/update' do

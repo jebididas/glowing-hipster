@@ -1,8 +1,32 @@
-
+/*>>>>> styling for the navbar <<<<<*/
 
 .navbar-brand {
   font-family: Amita;
+  font-size: 40px;
+  margin-top: 8%;
 }
+
+#avatar-image {
+  width: 40px; 
+  height: 40px;
+}
+
+#nav-user {
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+#nav-login-logout {
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+#plusone-nav-image {
+  width: 40px;
+  height: 40px;
+  margin-top: 5%;
+}
+
   
 /*>>>>> background image styling <<<<<*/
 
@@ -35,10 +59,10 @@ body.edit {
 body.new {
   background-image: url("../images/new-plusone-image.jpg");
 }
-/*
-body.results {
-  background-image: url("../images/results-image.jpg");
-}*/
+
+body.upload {
+  background-image: url("../images/user-upload-image.jpg");
+}
 
 /*>>>>> styling for the index page <<<<<*/
 
@@ -201,8 +225,16 @@ body.results {
 /*>>>>> styling for the summary table score data <<<<<<*/
 
 #table-score-data {
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
+  font-weight: bolder;
+}
+
+#table-score-total {
+  font-size: 20px;
+  text-align: center;
+  background-color: #E6E6E6; 
+  font-weight: bolder;
 }
 
 #current-user-name {
@@ -212,13 +244,53 @@ body.results {
 #table-username {
   font-size: 18px;
   text-align: center;
+  background-color: #E6E6E6;
+}
+
+#table-button {
+  width: 100%;
+  font-color: whitesmoke;
 }
 
 th {
   font-size: 18px;
   text-align: center;
+  background-color: #CFCFCF;
 }
 
+a.btn:link { 
+  color: #fff; 
+}
+
+
+a.btn:visited {
+  color: #00FF00;
+}
+
+a.btn:hover {
+  color: #FF00FF;
+}
+
+
+a.btn:active {
+  color: #0000FF;
+}
+
+#table-style {
+  border-radius: 10px;
+}
+
+/*>>>>> styling for user upload page <<<<<*/
+
+#upload-header {
+ width: 100%;
+ text-align: center;
+ color: whitesmoke;
+}
+
+#upload-btn {
+  margin-top: 5%;
+}
 
 
 
