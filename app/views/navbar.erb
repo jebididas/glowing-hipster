@@ -18,7 +18,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-        <li><a href="/users/upload"><img id="avatar-image" src="/images/users/<%= current_user.id %>/default-user.png"/></a></li>
+        <li><a href="/upload"><img id="avatar-image" src="/images/users/<%= current_user.id %>/default-user.png"/></a></li>
         <li id="nav-user"><a href="/users/edit"><%= current_user.username %></a></li>
         <li id="nav-login-logout"><a href="/logout">Logout</a></li>
         <% else %>
