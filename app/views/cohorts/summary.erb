@@ -1,0 +1,11 @@
+<div>
+  <table>
+    <% @cohort.all_users_plusones_sorted_by_time(@date).each do |plusone|%>
+      <tr>
+        <td> <%= plusone.user.username %> </td>
+        <td id="post-info"> <%= plusone.description %> </td>
+        <th id="post-info"> <%= plusone.score %> </th>
+      </tr>
+    <% end %>
+  </table>
+</div>

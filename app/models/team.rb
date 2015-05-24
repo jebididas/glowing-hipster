@@ -1,3 +1,3 @@
 class Team < ActiveRecord:Base
- belongs_to :cohorts
+ belongs_to :cohort
 end

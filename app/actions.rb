@@ -83,9 +83,9 @@ get '/plusones' do
   end
 end
 
-get '/plusones/:date' do
+get '/users/:id/plusones/:date' do
   @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
-  @user = current_user
+  @user = User.find params[:id]
   erb :'/plusones/show'
 end
 
@@ -131,4 +131,10 @@ end
 get '/cohorts/:id/index' do
   @cohort = Cohort.find params[:id]
   erb :'cohorts/index'  
+end
+
+get '/cohorts/:id/:date' do
+  @cohort = Cohort.find params[:id]
+  @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
+  erb :'cohorts/summary'  
 end

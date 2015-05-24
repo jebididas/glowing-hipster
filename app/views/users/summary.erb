@@ -4,6 +4,7 @@
   <table>
     <% @user.plusones_sorted_by_time(current_date).each do |plusone|%>
       <tr>
+      <td id="post-info"> <%= plusone.user.username %> </td>
       <td id="post-info"> <%= plusone.description %> </td>
       <th id="post-info"> <%= plusone.score %> </th>
       <!-- <p> <%= plusone.created_at %> </p> -->
@@ -21,14 +22,14 @@
     <tr>
       <th> Date </th>
         <% for day in 0..6 do%>
-          <th><a href="/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
+          <th><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
         <% end %>
       <th> Total </th>
     </tr>
     <tr>
       <th> Score </th>
         <% for day in 0..6 do %>
-          <% unless @user.week_scores(current_week)[day].nil? %>
+          <% unless @user.week_scores(current_week)[day] == 0 %>
             <td> <%= @user.week_scores(current_week)[day] %> </th> 
           <% else %>
             <td> - </td> 
@@ -42,5 +43,5 @@
 
 <h3> Cohorts </h3>
 <% @user.cohorts.each do |cohort|%>
-  <p> <%=cohort.name%> </p>
+  <p><a href="/cohorts/<%= cohort.id %>/index"> <%=cohort.name%> </p>
 <% end %>

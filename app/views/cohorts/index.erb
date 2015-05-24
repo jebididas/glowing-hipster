@@ -1,1 +1,52 @@
 <h2> <%= @cohort.name %> </h2>
+
+<!-- <div>
+  <% @cohort.users.each do |user| %>
+  <table>
+    <% user.plusones_sorted_by_time(current_date).each do |plusone|%>
+      <tr>
+      <td id="post-info"> <%= user.username %> </td>
+      <td id="post-info"> <%= plusone.description %> </td>
+      <th id="post-info"> <%= plusone.score %> </th>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div> -->
+<hr>
+<h3> List of today's acitivities </h3>
+<% @cohort.all_users_plusones_sorted_by_time(current_date).each do |plusone|%>
+  <p> <%= plusone.user.username %> </p>
+  <p> Description: <%= plusone.description %> </p>
+  <p> Created at: <%= plusone.created_at %> </p>
+<% end %> 
+
+<hr>
+<p> Best of the week: <%= @cohort.weekly_best(current_week) %> </p>
+<p> Worst of the week: <%= @cohort.weekly_worst(current_week) %> </p>
+
+<hr>
+<div class="table-responsive" id="table-style">
+  <table class="table">
+      <tr>
+        <th> Date </th>
+          <% for day in 0..6 do%>
+            <th><a href="/cohorts/<%= @cohort.id %>/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
+          <% end %>
+        <th> Total </th>
+      </tr>
+    <% @cohort.users.each do |user| %>  
+      <tr>
+        <th> <%= user.username %> </th>
+          <% for day in 0..6 do %>
+            <% unless user.week_scores(current_week)[day].nil? %>
+              <td> <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= user.week_scores(current_week)[day] %> </a></th> 
+            <% else %>
+              <td> - </td> 
+            <% end %>
+          <% end %>
+        <th> <%= user.weekly_total_score(current_week) %> </th>
+      </tr>
+    <% end %>
+  </table>
+</div>
