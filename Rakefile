@@ -27,8 +27,8 @@ end
 
 desc "populate the test database with sample data"
 task "db:populate" do
-  # UsersImporter.new.import
-  # PlusonesImporter.new.import
-  # ActivitiesImporter.new.import
+  UsersImporter.new.import
+  PlusonesImporter.new.import
+  ActivitiesImporter.new.import
   CohortsImporter.new.import
 end
