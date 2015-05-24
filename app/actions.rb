@@ -3,8 +3,6 @@ helpers do
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
 
-
-
   def current_date
     (Time.now + Time.zone_offset('PDT')).to_date
   end
@@ -92,8 +90,20 @@ get '/plusones/:date' do
 end
 
 get '/users/edit' do
-  erb :'edit'
+  erb :'/users/edit'
 end
+
+get '/users/upload' do
+  erb :'/users/upload'
+end
+
+post "/users/upload" do 
+  File.open("public/images/users/#{current_user.id}/" + "default-user.png", "w") do |f|
+    f.write(params[:myfile][:tempfile].read)
+  end
+  redirect '/users/edit'
+end
+
 
 post '/users/edit' do
   if current_user
