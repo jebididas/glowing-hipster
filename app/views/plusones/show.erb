@@ -1,0 +1,11 @@
+<div>
+  <table>
+    <% @user.plusones_sorted_by_time(@date).each do |plusone|%>
+      <tr>
+      <td id="post-info"> <%= plusone.description %> </td>
+      <th id="post-info"> <%= plusone.score %> </th>
+      <!-- <p> <%= plusone.created_at %> </p> -->
+      </tr>
+    <% end %>
+  </table>
+</div>

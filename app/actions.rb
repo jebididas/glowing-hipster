@@ -51,9 +51,8 @@ get '/logout' do
   redirect '/'
 end
 
-get '/user/:id' do
+get '/users/:id' do
   @user = User.find params[:id]
-  @plusones = @user.plusones
   erb :'users/summary'  
 end
 
@@ -65,7 +64,7 @@ post '/plusones/new' do
   @plusone = Plusone.create(
     score: params[:score].to_i,
     user_id: current_user.id,
-    p_date: current_day)
+    p_date: current_date)
   # @activity = Activity.create(
   #   description: params[:description],
   #   plusone_id: @plusone.id)
@@ -82,6 +81,12 @@ get '/plusones' do
   else
     redirect '/login'
   end
+end
+
+get '/plusones/:date' do
+  @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
+  @user = current_user
+  erb :'/plusones/show'
 end
 
 get '/edit' do
@@ -107,4 +112,18 @@ post '/plusones/update' do
   end
 end
 
+get '/cohorts/new' do
+  erb :'/cohorts/new'
+end
+
+post '/cohorts/new' do
+  @cohort = Cohort.create(
+    name: params[:name],
+    c_public: params[:c_pulic],
+    admin: current_user.id)
+  @enrollment = Enrollment.create(
+    user_id: current_user.id,
+    cohort_id: @cohort.id)
+  redirect '/' if @cohort.save && @enrollment.save
+end
 
