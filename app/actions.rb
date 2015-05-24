@@ -61,10 +61,10 @@ post '/plusones/new' do
     score: params[:score].to_i,
     user_id: current_user.id,
     p_date: current_day)
-  @activity = Activity.create(
-    description: params[:description],
-    plusone_id: @plusone.id)
-  if @plusone.save && @activity.save
+  # @activity = Activity.create(
+  #   description: params[:description],
+  #   plusone_id: @plusone.id)
+  if @plusone.save
     redirect '/plusones'
   else
     redirect '/plusones/new'
