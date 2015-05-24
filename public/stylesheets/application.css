@@ -12,11 +12,19 @@
 }
 
 #nav-user {
-  margin-top: 6%;
+  margin-top: 5%;
+  font-size: 20px;
 }
 
 #nav-login-logout {
-  margin-top: 6%;
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+#plusone-nav-image {
+  width: 40px;
+  height: 40px;
+  margin-top: 5%;
 }
 
   
