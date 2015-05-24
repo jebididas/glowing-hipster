@@ -1,4 +1,4 @@
-<h2><%= current_user.username %></h2>
+<h2 id="current-user-name"><%= current_user.username %></h2>
 
 <div class="table-responsive" id="table-style">
  <table class="table">
@@ -15,12 +15,13 @@
    </tr>
    <% User.all.each do |user| %>
      <tr>
-        <td><%= user.username %></td>
+        <td id="table-username"><%= user.username %></td>
         <% user.plusones.each do |p_one| %>
-          <td><a href="/plusones"><%= p_one.score %></a></td>
+          <td id="table-score-data"><a href="/plusones"><button type="button" class="btn btn-success"><%= p_one.score %></a></td></button>
         <% end %>
-        <td><%= user.total_score %></td>
+        <td id="table-score-data"><%= user.total_score %></td>
     </tr>
   <% end %>
 </table>
 </div>
+
