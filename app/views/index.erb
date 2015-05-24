@@ -1,3 +1,8 @@
+<% if current_user %>
+<% @body_class = "results" %>
+<%= erb :'/plusones/index' %>
+<% else %>
+
 <% @body_class = "index" %>
 <br>
 <div class="input-group-box">
@@ -5,27 +10,23 @@
   <form method="post" action="/">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-      <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      <input type="text" name="username" class="form-control" id="index-username" placeholder="Username" aria-describedby="basic-addon1">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></span>
-      <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+      <input type="password" name="password" class="form-control" id="index-password" placeholder="Password" aria-describedby="basic-addon1">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-      <input type="text" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+      <input type="text" name="email" class="form-control" id="index-email" placeholder="Email" aria-describedby="basic-addon1">
     </div> 
     <br>
-    <span class="input-group-btn">
-      <button class="btn btn-primary" id="index-register-button" type="submit">Register</button>
-    </span>
+    <button class="btn btn-primary" id="index-register-button" type="submit">Register</button>
   </form>
   <p id="index-intro"> Create a FREE profile at +1 Health today, to help you become the healthy person you want to be!  If you are already a member Login here!</p>
-  <span class="input-group-btn">
-    <button class="btn btn-primary" id="index-login-button" type="submit">Login</button>
-  </span>
+  <button class="btn btn-primary" id="index-login-button" type="submit">Login</button>
 </div>
 
-
+<% end %>

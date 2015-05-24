@@ -2,11 +2,14 @@ helpers do
   def current_user
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
+  def current_day
+    @current_day = Date.today
+  end
 end
 
 # Homepage (Root path)
 get '/' do
-  erb :index
+  erb :'index'
 end
 
 post '/' do # Register new user
@@ -45,6 +48,7 @@ end
 
 get '/user/:id' do
   @user = User.find params[:id]
+  @plusones = @user.plusones
   erb :'users/summary'  
 end
 
@@ -54,14 +58,48 @@ end
 
 post '/plusones/new' do
   @plusone = Plusone.create(
-    score: params[:score],
-    user_id: current_user.id)
-  if @plusone.save
-    redirect '/'
+    score: params[:score].to_i,
+    user_id: current_user.id,
+    p_date: current_day)
+  @activity = Activity.create(
+    description: params[:description],
+    plusone_id: @plusone.id)
+  if @plusone.save && @activity.save
+    redirect '/plusones'
+  else
+    redirect '/plusones/new'
+  end
+end
+
+get '/plusones' do
+  if current_user
+    erb :'/plusones/index'
+  else
+    redirect '/login'
   end
 end
 
 get '/edit' do
   erb :'edit'
 end
+
+get '/plusones/update' do
+  @user = User.first # will be changed later
+  # @plusones = @user.plusones
+  erb :'/plusones/update'
+end
+
+post '/plusones/update' do
+
+  @plusone = Plusone.create(
+    score: params[:score],
+    user_id: current_user.id)
+  @activity = Activity.create(
+    description: params[:description],
+    plusone_id: @plusone.id)
+  if @plusone.save && @activity.save
+    redirect '/plusones'
+  end
+end
+
 

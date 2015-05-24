@@ -1,21 +1,21 @@
-class PlusonesImporter
+class CohortsImporter
 
-  def initialize(filename=File.dirname(__FILE__) + "/../db/data/plusones.csv")
+  def initialize(filename=File.dirname(__FILE__) + "/../db/data/cohorts.csv")
     @filename = filename
   end
 
   def import
-    field_names = ['score', 'created_at', 'updated_at', 'user_id', 'p_date', 'description']
+    field_names = ['name', 'public', 'admin', 'created_at', 'updated_at', 'password']
 
     print "Importing plusones from #{@filename}: "
     failure_count = 0
 
-    Plusone.transaction do
+    Cohort.transaction do
       File.open(@filename).each do |line|
         data = line.chomp.split(',')
         attribute_hash = Hash[field_names.zip(data)]
         begin
-          plusone = Plusone.create!(attribute_hash)
+          cohort = Cohort.create!(attribute_hash)
           print "."; STDOUT.flush
         rescue ActiveRecord::UnknownAttributeError
           print "!"; STDOUT.flush
@@ -23,7 +23,7 @@ class PlusonesImporter
         end
       end
     end
-    failures = "(failed to create #{failure_count} plusone records)" if failure_count > 0
+    failures = "(failed to create #{failure_count} cohort records)" if failure_count > 0
     puts "\nDONE #{failures}\n\n"
   end
 

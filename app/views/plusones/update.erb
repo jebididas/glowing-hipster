@@ -1,0 +1,21 @@
+<% @body_class = "new" %>
+
+<div class="new-plusone">
+  <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= Date.today.strftime("%A") %></h2>
+  <form method="post" action="/plusones/new">
+    <!-- <input type="number" name="score" class="form-control new-score" id="new-plusone-input" placeholder="Score" aria-describedby="basic-addon1">
+  -->    <textarea class="form-control" id="new-plusone-textarea" rows="5" placeholder="Leave a comment about your workout or your dietary guilty pleasure..." ></textarea>
+  <button class="btn btn-success" id="new-plusone-btn" type="submit">Feeling pumped!</button>
+  <br>
+  <button class="btn btn-danger" id="new-plusone-btn" type="submit">Moment of weakness!</button>
+</form>
+</div>
+
+<% @user.plusones_sorted_by_time(Date.today.prev_day).each do |plusone|%>
+<div id="return-posts">
+  <p id="post-info"><%= plusone.description %> <strong><%= plusone.score %></strong></p>
+  <p id="post-info">Date: <%= plusone.created_at.strftime("%A") %> </p>
+</div>
+<% end %>
+
+  <!--  <p id="test"> <%= @user.plusones.first.activity.description %></p> -->

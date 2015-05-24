@@ -1,0 +1,26 @@
+<h2><%= current_user.username %></h2>
+
+<div class="table-responsive" id="table-style">
+ <table class="table">
+   <tr>
+     <th>Username</th>
+     <th>Sunday</th>
+     <th>Monday</th>
+     <th>Tuesday</th>
+     <th>Wednesday</th>
+     <th>Thursday</th>
+     <th>Friday</th>
+     <th>Saturday</th>
+     <th>Total</th>
+   </tr>
+   <% User.all.each do |user| %>
+     <tr>
+        <td><%= user.username %></td>
+        <% user.plusones.each do |p_one| %>
+          <td><a href="/plusones"><%= p_one.score %></a></td>
+        <% end %>
+        <td><%= user.total_score %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

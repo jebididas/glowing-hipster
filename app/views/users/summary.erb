@@ -2,17 +2,27 @@
 <br>
 
 <p> <%= @user.username %> </p>
+
+<% @plusones.each do |plusone|%>
+  <p> <%= plusone.activity.description unless plusone.activity.nil?%></p>
+  <p> <%= plusone.score %> </p>
+<% end %>
+
+<hr>
+<p> </p>
+
+<hr>
 <table border="1">
     <tr>
       <th> Date </th>
-      <% @user.plusones.each do |score|%>
-        <th style="Padding: 5px"> <%= score.created_at.day.to_s %> </th>
+      <% @plusones.each do |plusone|%>
+        <th style="Padding: 5px"> <%= plusone.created_at.day.to_s %> </th>
       <% end %>
     </tr>
     <tr>
-      <td> </td>
-      <% @user.plusones.each do |score|%>
-        <td style="Padding: 5px"> <%= score.score.to_s %> </td>
+      <th> Score </th>
+      <% @plusones.each do |plusone|%>
+        <td style="Padding: 5px"> <%= plusone.score.to_s %> </td>
       <% end %>
     </tr>
 </table>

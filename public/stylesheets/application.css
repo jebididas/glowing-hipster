@@ -1,15 +1,163 @@
+
+
+.navbar-brand {
+  font-family: Amita;
+}
+  
+/*>>>>> background image styling <<<<<*/
+
+html {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+body{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 100%;
+  min-width: 100%;
+  background-attachment: fixed;
+}
+
+body.index {
+  background-image: url("../images/index-image.jpg");
+}
+
+body.login {
+  background-image: url("../images/login-image.jpg");
+}
+
+body.edit {
+  background-image: url("../images/edit-image.jpg");
+}
+
+body.new {
+  background-image: url("../images/new-plusone-image.jpg");
+}
+/*
+body.results {
+  background-image: url("../images/results-image.jpg");
+}*/
+
+/*>>>>> styling for the index page <<<<<*/
+
+#index-hdr {
+  color: whitesmoke;
+  font-size: 1.75em;
+  float: right;
+  margin-right: 12%;
+  margin-bottom: 5%;
+}
+
+
+.input-group-box {
+  width: 330px;
+  float: right;
+  margin-right: 8%;
+}
+
+#index-username {
+  width: 290px;
+}
+
+#index-password {
+  width: 290px;
+}
+
+#index-email {
+  width: 290px;
+}
+
+#index-intro {
+  color: whitesmoke;
+  font-size: 1.2em;
+  margin-top: 2%;
+  width: 330px;
+}
+
+#index-login-button {
+  width: 330px;
+}
+
+#index-register-button {
+  width: 330px;
+}
+
+/*>>>>> style for the login page <<<<<*/
+
+#login-hdr {
+  color: whitesmoke;
+  text-align: center;
+}
+
 .form-signin {
-  max-width: 35%;
+  width: 350px;
   padding: 5%;
   padding-top: 15%;
   margin: 0 auto;
 }
 
+/*>>>>> style for the edit page <<<<<*/
+
+#edit-form {
+  margin-left: 10%;
+  width: 330px;
+}
+
+#avatar-hdr {
+  margin-left: 10%;
+  color: whitesmoke;
+  margin-bottom: 1%;
+}
+
+#edit-hdr {
+  color: whitesmoke;
+  margin-left: 10%;
+  margin-top: 7%;
+}
+
+#edit-avatar-info {
+  color: whitesmoke;
+  margin-left: 10%;
+  font-size: 1.1em;
+}
+
+#edit-form-button {
+  margin-left: 10%;
+  width: 330px;
+}
+
+#choose-file-btn {
+  margin-left: 10%;
+  margin-bottom: 1%;
+}
+
+/*>>>>> styling for the users results table <<<<<*/
+
+#table-style {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/*>>>>> styling for the new plusone page <<<<<*/
+
 .new-plusone {
-  max-width: 300px;
+  margin-top: 1%;
+  max-width: 100%;
   padding: 15px;
   margin: 0 auto;
   text-align: center;
+  text-shadow: .2em 0 0;
+}
+
+#new-hdr {
+  color: whitesmoke
+}
+
+.main-color {
+  color: royalblue;
 }
 
 .new-score {
@@ -18,10 +166,40 @@
   margin: auto;
 }
 
-.main-color {
-  color: royalblue;
+#new-plusone-btn {
+  width: 376px;
+  /*margin: 0.5% auto;*/
+  margin-top: .25%;
 }
 
-.navbar-brand {
-  font-family: Amita;
+#new-plusone-textarea {
+  width: 376px;
+  margin-left: 35%;
+  /*margin: 0.5% auto;*/
+  margin-top: .25%;
+  resize: none;
 }
+
+/*>>>>>> styling for returning users posts on the update page <<<<<<*/
+
+#post-info {
+  color: black;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#return-posts {
+  background-color: whitesmoke;
+  width: 376px;
+  border: 1px solid grey;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-bottom: .25%;
+}
+
+
+
+
+
+
+
