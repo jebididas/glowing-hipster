@@ -5,7 +5,7 @@ class PlusonesImporter
   end
 
   def import
-    field_names = ['score', 'created_at', 'updated_at', 'user_id']
+    field_names = ['score', 'created_at', 'updated_at', 'user_id', 'p_date', 'description']
 
     print "Importing plusones from #{@filename}: "
     failure_count = 0
