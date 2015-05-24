@@ -2,8 +2,13 @@ helpers do
   def current_user
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
-  def current_day
-    @current_day = Date.today
+
+  def current_date
+    (Time.now + Time.zone_offset('PST')).to_date
+  end
+
+  def current_week
+    current_date.strftime("%U").to_i
   end
 end
 
