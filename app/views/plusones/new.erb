@@ -3,6 +3,7 @@
 <% @body_class = "new" %>
 
 <div class="new-plusone">
+
   <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= current_day.strftime("%A") %></h2>
   <form method="post" action="/plusones/new">
 
@@ -16,7 +17,7 @@
     <a href="#" class="list-group-item">
       <p class="list-group-item-text"><%= p_one.description %> <strong><%= p_one.score %></strong></p>
     </a>
-    </div> 
+  </div> 
   <% end %>
 </div>
 

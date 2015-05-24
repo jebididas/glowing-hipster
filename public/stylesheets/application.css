@@ -1,9 +1,9 @@
-  
+
 
 .navbar-brand {
   font-family: Amita;
 }
-
+  
 /*>>>>> background image styling <<<<<*/
 
 html {
@@ -144,7 +144,7 @@ body.results {
 /*>>>>> styling for the new plusone page <<<<<*/
 
 .new-plusone {
-  margin-top: 5%;
+  margin-top: 1%;
   max-width: 100%;
   padding: 15px;
   margin: 0 auto;
@@ -168,14 +168,36 @@ body.results {
 
 #new-plusone-btn {
   width: 376px;
-  margin: 0.5% auto;
+  /*margin: 0.5% auto;*/
+  margin-top: .25%;
 }
 
 #new-plusone-textarea {
   width: 376px;
-  /*margin-left: 35%;*/
-  margin: 0.5% auto;
+  margin-left: 35%;
+  /*margin: 0.5% auto;*/
+  margin-top: .25%;
+  resize: none;
 }
+
+/*>>>>>> styling for returning users posts on the update page <<<<<<*/
+
+#post-info {
+  color: black;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#return-posts {
+  background-color: whitesmoke;
+  width: 376px;
+  border: 1px solid grey;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-bottom: .25%;
+}
+
+
 
 
 
