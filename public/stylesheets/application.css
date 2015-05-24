@@ -1,8 +1,24 @@
-
+/*>>>>> styling for the navbar <<<<<*/
 
 .navbar-brand {
   font-family: Amita;
+  font-size: 40px;
+  margin-top: 8%;
 }
+
+#avatar-image {
+  width: 40px; 
+  height: 40px;
+}
+
+#nav-user {
+  margin-top: 6%;
+}
+
+#nav-login-logout {
+  margin-top: 6%;
+}
+
   
 /*>>>>> background image styling <<<<<*/
 
@@ -35,10 +51,10 @@ body.edit {
 body.new {
   background-image: url("../images/new-plusone-image.jpg");
 }
-/*
-body.results {
-  background-image: url("../images/results-image.jpg");
-}*/
+
+body.upload {
+  background-image: url("../images/user-upload-image.jpg");
+}
 
 /*>>>>> styling for the index page <<<<<*/
 
@@ -256,7 +272,17 @@ a.btn:active {
   border-radius: 10px;
 }
 
+/*>>>>> styling for user upload page <<<<<*/
 
+#upload-header {
+ width: 100%;
+ text-align: center;
+ color: whitesmoke;
+}
+
+#upload-btn {
+  margin-top: 5%;
+}
 
 
 
