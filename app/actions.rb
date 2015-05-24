@@ -4,7 +4,7 @@ helpers do
   end
 
   def current_date
-    (Time.now + Time.zone_offset('PST')).to_date
+    (Time.now + Time.zone_offset('PDT')).to_date
   end
 
   def current_week
