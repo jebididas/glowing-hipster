@@ -5,7 +5,7 @@ class CohortsImporter
   end
 
   def import
-    field_names = ['name', 'public', 'admin', 'created_at', 'updated_at', 'password']
+    field_names = ['name', 'c_public', 'admin', 'created_at', 'updated_at', 'password']
 
     print "Importing cohorts from #{@filename}: "
     failure_count = 0
