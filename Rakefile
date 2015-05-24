@@ -4,6 +4,7 @@ require ::File.expand_path('../config/environment', __FILE__)
 require_relative 'lib/users_importer'
 require_relative 'lib/plusones_importer'
 require_relative 'lib/activities_importer'
+require_relative 'lib/cohorts_importer'
 
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
@@ -26,7 +27,8 @@ end
 
 desc "populate the test database with sample data"
 task "db:populate" do
-  UsersImporter.new.import
-  PlusonesImporter.new.import
-  ActivitiesImporter.new.import
+  # UsersImporter.new.import
+  # PlusonesImporter.new.import
+  # ActivitiesImporter.new.import
+  CohortsImporter.new.import
 end

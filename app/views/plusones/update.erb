@@ -13,7 +13,7 @@
 
 <% @user.plusones_sorted_by_time(Date.today.prev_day).each do |plusone|%>
 <div id="return-posts">
-  <p id="post-info"><%= plusone.activity.description %> <strong><%= plusone.score %></strong></p>
+  <p id="post-info"><%= plusone.description %> <strong><%= plusone.score %></strong></p>
   <p id="post-info">Date: <%= plusone.created_at.strftime("%A") %> </p>
 </div>
 <% end %>

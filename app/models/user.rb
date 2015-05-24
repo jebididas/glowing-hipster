@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :plusones
+  has_and_belongs_to_many :cohorts
   
   validates :username, :email, 
             presence: true, 
