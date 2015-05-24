@@ -13,13 +13,32 @@
      <th>Total</th>
    </tr>
    <% User.all.each do |user| %>
-     <tr>
-        <td id="table-username"><%= user.username %></td>
-        <% user.plusones.each do |p_one| %>
-          <td id="table-score-data"><a href="/plusones"><button type="button" class="btn btn-success"><em><strong><%= p_one.score %></strong></em></a></td></button>
-        <% end %>
-        <td id="table-score-total"><%= user.total_score %></td>
-    </tr>
+   <tr>
+    <td id="table-username"><%= user.username %></td>
+    <% user.plusones.each do |p_one| %>
+    <td id="table-score-data">
+      <a href="/plusones">
+        <button type="button" class="btn btn-success">
+          <em><strong>
+            <% if p_one.score < 0 %>
+              <%= p_one.score %>
+            <% else %>
+              +<%= p_one.score %>
+            <% end %>
+          </strong></em>
+        </button>
+      </a>
+    </td>
+
+    <% end %>
+    <td id="table-score-total">
+      <% if user.total_score < 0 %>
+      <%= user.total_score %>
+      <% else %>
+      +<%= user.total_score %>
+      <% end %>
+    </td>
+  </tr>
   <% end %>
 </table>
 </div>
