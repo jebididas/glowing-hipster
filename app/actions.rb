@@ -78,8 +78,8 @@ get '/edit' do
 end
 
 get '/plusones/update' do
-  @user = User.find 1 # will be changed later
-  @plusones = @user.plusones
+  @user = User.first # will be changed later
+  # @plusones = @user.plusones
   erb :'/plusones/update'
 end
 

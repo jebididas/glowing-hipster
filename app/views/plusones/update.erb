@@ -8,10 +8,14 @@
   <button class="btn btn-success" id="new-plusone-btn" type="submit">Feeling pumped!</button>
   <br>
   <button class="btn btn-danger" id="new-plusone-btn" type="submit">Moment of weakness!</button>
-  <% @user.plusones_sorted_by_time(Date.today).each do |plusone|%>
-  <p> <%= plusone.activity.description %> </p>
-  <p> <%= plusone.score %> </p>
-  <p> <%= plusone.created_at %> </p>
-  <% end %>
 </form>
 </div>
+
+<% @user.plusones_sorted_by_time(Date.today.prev_day).each do |plusone|%>
+<div id="return-posts">
+  <p id="post-info"><%= plusone.activity.description %> <strong><%= plusone.score %></strong></p>
+  <p id="post-info">Date: <%= plusone.created_at.strftime("%A") %> </p>
+</div>
+<% end %>
+
+  <!--  <p id="test"> <%= @user.plusones.first.activity.description %></p> -->

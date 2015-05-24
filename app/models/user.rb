@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def plusones_sorted_by_time(date)
-    Plusone.where("date = '#{date}'").order(:created_at)
+    Plusone.where("p_date = '#{date}'").order(:created_at)
 end
 
 

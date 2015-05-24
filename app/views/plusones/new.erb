@@ -1,7 +1,7 @@
 <% @body_class = "new" %>
 
 <div class="new-plusone">
-  <h2 id="new-hdr">Add <span class="main-color">+1</span> for <%= current_user.plusones.find(1).date %></h2>
+  <h2 id="new-hdr">Add <span class="main-color">+1</span> for <%= Date.today.strftime("%A") %></h2>
   <form method="post" action="/plusones/new">
     <!-- <input type="number" name="score" class="form-control new-score" id="new-plusone-input" placeholder="Score" aria-describedby="basic-addon1">-->    
     <textarea class="form-control" id="new-plusone-textarea" rows="5" placeholder="Leave a comment about your workout or your dietary guilty pleasure..." ></textarea>
