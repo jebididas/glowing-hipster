@@ -94,7 +94,11 @@ get '/users/edit' do
 end
 
 get '/users/upload' do
-  erb :'/users/upload'
+  if current_user
+    erb :'/users/upload'
+  else
+    redirect '/login'
+  end
 end
 
 post "/users/upload" do 
