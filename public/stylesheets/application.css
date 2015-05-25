@@ -370,5 +370,28 @@ a.btn:active {
   margin-left: 55%;
 }*/
 
+/*>>>>> syling for users show page <<<<<*/
+
+#show-user-plusone {
+  margin-left: 45%;
+  margin-top: 1%;
+}
+
+#show-user-hdr {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+#show-user-info {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 410px;
+}
+
+#user-update-btn {
+  width: 200px;
+  margin-left: 42%;
+}
+
 
 

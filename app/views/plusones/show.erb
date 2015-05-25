@@ -1,10 +1,10 @@
-<img src="/images/users/<%= @user.id %>/default-user.png"/>
+<img id="show-user-plusone" src="/images/users/<%= @user.id %>/default-user.png"/>
 
-<h3>List of <%= @date.strftime("%A") %>'s acitivities</h3>
+<h3 id="show-user-hdr">List of <%= @date.strftime("%A") %>'s acitivities</h3>
 
 <div class="row">
   <% @user.plusones_sorted_by_time(@date).each do |plusone| %>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4" id="show-user-info">
       <% if plusone.score > 0 %>
       <div class="panel panel-success">
         <div class="panel-heading"><%= plusone.user.username %> +<%= plusone.score %></div>
@@ -28,5 +28,5 @@
   <% end %> 
 </div>
 <% if current_user.id == @user.id %>
-  <p><a href="/users/<%=@user.id%>/plusones/<%= @date.strftime("%y%m%d")%>/update"> update </a></p>
+  <p><a href="/users/<%=@user.id%>/plusones/<%= @date.strftime("%y%m%d")%>/update"><button type="button" class="btn btn-primary" id="user-update-btn">Add another +1</button></a></p>
 <% end %>
