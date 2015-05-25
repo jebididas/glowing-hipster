@@ -1,43 +1,66 @@
 <h2> <%= @user.username %> </h2>
 
-<div>
-  <table>
-    <% @user.plusones_sorted_by_time(current_date).each do |plusone|%>
-      <tr>
-      <td id="post-info"> <%= plusone.user.username %> </td>
-      <td id="post-info"> <%= plusone.description %> </td>
-      <th id="post-info"> <%= plusone.score %> </th>
-      <!-- <p> <%= plusone.created_at %> </p> -->
-      </tr>
-    <% end %>
-  </table>
+<h3> Cohorts </h3>
+<div class="row">
+  <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
+    <img src="/images/users/<%= @user.id %>/default-user.png"/>
+  </div>
+  <% @user.cohorts.each do |cohort|%>
+  <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
+      <a href="/cohorts/<%= cohort.id %>/index">
+       <button class="btn btn-info" id="new-plusone-btn">
+        <%= cohort.name %>
+        </button>
+      </a>
+  </div>
+  <% end %>
 </div>
 
+<div>
+  <div class="row">
+    <% @user.plusones_sorted_by_time(current_date).each do |plusone| %>
+    <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
+      <% if plusone.score > 0 %>
+      <div class="panel panel-success">
+        <div class="panel-heading"><%= plusone.user.username %> +<%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% elsif plusone.score < 0 %>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% else %>
+      <div class="panel panel-info">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% end %>
+    </div>
+    <% end %> 
+  </div>
+</div>
 <hr>
-<p> </p>
-
-<hr>
+<h3>User Weekly Progress</h3>
 <div class="table-responsive" id="table-style">
   <table class="table">
     <tr>
       <th> Date </th>
-        <% for day in 0..6 do%>
-          <th><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
-        <% end %>
+      <% for day in 0..6 do%>
+      <th><%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></th>
+      <% end %>
       <th> Total </th>
     </tr>
     <tr>
       <th> Score </th>
-        <% for day in 0..6 do %>
-            <td> <%= @user.week_scores(current_week)[day] %> </th> 
+      <% for day in 0..6 do %>
+      <td><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"><%= @user.week_scores(current_week)[day] %></a></th> 
         <% end %>
-      <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
-    </tr>
-  </table>
-</div>
-<!-- <p> <%= @user.week_scores(current_week) %> </p> -->
-
-<h3> Cohorts </h3>
-<% @user.cohorts.each do |cohort|%>
-  <p><a href="/cohorts/<%= cohort.id %>/index"> <%=cohort.name%> </p>
-<% end %>
+        <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
+      </tr>
+    </table>
+  </div>
+  <!-- <p> <%= @user.week_scores(current_week) %> </p> -->
