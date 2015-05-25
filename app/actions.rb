@@ -74,20 +74,9 @@ post '/plusones/new' do
   #   description: params[:description],
   #   plusone_id: @plusone.id)
 if @plusone.save
-  redirect '/plusones'
+  redirect "/users/#{current_user.id}"
 else
   redirect '/plusones/new'
-end
-end
-
-get '/plusones' do
-  if current_user
-    @cohort = Cohort.find params[:id]
-    @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
-    erb :'/plusones/index'
-  else
-    redirect '/login'
-  end
 end
 
 get '/users/:id/plusones/:date' do
