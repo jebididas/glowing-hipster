@@ -1,11 +1,27 @@
-<div>
-  <table>
-    <% @user.plusones_sorted_by_time(@date).each do |plusone|%>
-      <tr>
-      <td id="post-info"> <%= plusone.description %> </td>
-      <th id="post-info"> <%= plusone.score %> </th>
-      <!-- <p> <%= plusone.created_at %> </p> -->
-      </tr>
-    <% end %>
-  </table>
+<h3>List of <%= @date.strftime("%A") %>'s acitivities</h3>
+
+<div class="row">
+  <% @user.plusones_sorted_by_time(@date).each do |plusone| %>
+    <div class="col-sm-6 col-md-4">
+      <% if plusone.score > 0 %>
+      <div class="panel panel-success">
+        <div class="panel-heading"><%= plusone.user.username %> +<%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% elsif plusone.score < 0 %>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% else %>
+      <div class="panel panel-info">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% end %>
+    </div>
+  <% end %> 
 </div>
