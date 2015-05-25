@@ -12,8 +12,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="/plusones">Plusones <span class="sr-only"></span></a></li> -->
-        <% if current_user %><li>
-        <a href="/plusones/new"><img id="plusone-nav-image" src="/images/new-plus-one.png"/></a></li>
+        <% if current_user %>
+        <li><a href="/plusones/new"><img id="plusone-nav-image" src="/images/new-plus-one.png"/></a></li>
+        <li id="click-plus-one">&#8668; Add +1</li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

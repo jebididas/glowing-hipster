@@ -89,7 +89,7 @@ get '/users/:id/plusones/:date' do
   erb :'/plusones/show'
 end
 
-get '/users/edit' do
+get '/users/:id/edit' do
   erb :'/users/edit'
 end
 
@@ -105,7 +105,7 @@ post '/upload' do
   File.open("public/images/users/#{current_user.id}/" + "default-user.png", "w") do |f|
     f.write(params[:myfile][:tempfile].read)
   end
-  redirect '/users/edit'
+  redirect '/users/:id/edit'
 end
 
 

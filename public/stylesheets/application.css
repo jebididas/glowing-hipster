@@ -292,7 +292,12 @@ a.btn:active {
   margin-top: 5%;
 }
 
-
+#click-plus-one {
+  font-family: Amita;
+  font-size: 18px;
+  color: lightblue;
+  margin-top:15%;
+}
 
 
 
