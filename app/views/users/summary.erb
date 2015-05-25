@@ -45,11 +45,11 @@
 <h3 id="user-weekly-progress-hdr">User Weekly Progress</h3>
 
 <div id="week-changer-buttons">
-<div class="btn-group" role="group">
+  <div class="btn-group" role="group">
     <a href="/users/<%=@user.id%>/prev_week" class="btn btn-info" role="button">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     </a>
-     <a href="/users/<%=@user.id%>" class="btn btn-info" role="button">
+    <a href="/users/<%=@user.id%>" class="btn btn-info" role="button">
       Current Week
     </a>
     <a href="/users/<%=@user.id%>/next_week" class="btn btn-info" role="button">
@@ -71,9 +71,19 @@
       <th> Score </th>
       <% for day in 0..6 do %>
       <td id="user-summary-table-btn"><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>">
+       <% if @user.week_scores(current_week)[day] > 0 %>
        <button type="button" class="btn btn-success">
+        +<%= @user.week_scores(current_week)[day] %>
+      </button>
+      <% elsif @user.week_scores(current_week)[day] < 0 %>
+      <button type="button" class="btn btn-danger">
         <%= @user.week_scores(current_week)[day] %>
       </button>
+      <% else %>
+      <button type="button" class="btn btn-info">
+        0
+      </button>
+      <% end %>
     </a>
   </td> 
   <% end %>
