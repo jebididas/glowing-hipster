@@ -1,4 +1,4 @@
-<h2> <%= @cohort.name %> </h2>
+  <h2 id="cohorts-main-hdr"> <%= @cohort.name %> </h2>
 
 <!-- <div>
   <% @cohort.users.each do |user| %>
@@ -14,22 +14,26 @@
   <% end %>
 </div> -->
 <hr>
-<h3> List of today's acitivities </h3>
+<h3 id="cohorts-hdr"> List of today's acitivities </h3>
+<hr>
 <% @cohort.all_users_plusones_sorted_by_time(current_date).each do |plusone|%>
-  <p> <%= plusone.user.username %> </p>
-  <p> Description: <%= plusone.description %> </p>
-  <p> Created at: <%= plusone.created_at %> </p>
+<div id="cohorts-activities">
+<p><strong><%= plusone.user.username %></strong></p>
+  <p><strong>Description: </strong><%= plusone.description %> </p>
+  <p><strong>Created at: </strong><%= plusone.created_at %> </p>
+</div>
+<hr>
 <% end %> 
 
 <hr>
-<p> Best of the week: <%= @cohort.weekly_best(current_week) %> </p>
-<p> Worst of the week: <%= @cohort.weekly_worst(current_week) %> </p>
+<p id="weekly-win-loss"><strong>Best of the week:</strong> <%= @cohort.weekly_best(current_week) %> </p>
+<p id="weekly-win-loss"><strong>Worst of the week:</strong> <%= @cohort.weekly_worst(current_week) %> </p>
 
 <hr>
 <div class="table-responsive" id="table-style">
   <table class="table">
       <tr>
-        <th> Date </th>
+        <th id="cohort-table-header"> Date </th>
           <% for day in 0..6 do%>
             <th><a href="/cohorts/<%= @cohort.id %>/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
           <% end %>
@@ -40,7 +44,7 @@
         <th> <%= user.username %> </th>
           <% for day in 0..6 do %>
             <% unless user.week_scores(current_week)[day].nil? %>
-              <td> <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= user.week_scores(current_week)[day] %> </a></th> 
+              <td id="cohorts-user-score"><button type="button" class="btn btn-success"><a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= user.week_scores(current_week)[day] %> </a></button></th> 
             <% else %>
               <td> - </td> 
             <% end %>
