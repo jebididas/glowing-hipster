@@ -1,9 +1,7 @@
-<h2> <%= @user.username %> </h2>
-
-<h3> Cohorts </h3>
+<h2 id="user-summary-hdr"> <%= @user.username %> </h2>
 <div class="row">
   <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
-    <img src="/images/users/<%= @user.id %>/default-user.png"/>
+    <img id="user-summary-image" src="/images/users/<%= @user.id %>/default-user.png"/>
   </div>
   <% @user.cohorts.each do |cohort|%>
   <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
@@ -44,7 +42,7 @@
   </div>
 </div>
 <hr>
-<h3>User Weekly Progress</h3>
+<h3 id="user-weekly-progress-hdr">User Weekly Progress</h3>
 <div class="table-responsive" id="table-style">
   <table class="table">
     <tr>
@@ -57,7 +55,12 @@
     <tr>
       <th> Score </th>
       <% for day in 0..6 do %>
-      <td><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"><%= @user.week_scores(current_week)[day] %></a></th> 
+      <td id="user-summary-table-btn"><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>">
+       <button type="button" class="btn btn-success">
+      <%= @user.week_scores(current_week)[day] %>
+      </button>
+      </a>
+      </td> 
         <% end %>
         <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
       </tr>

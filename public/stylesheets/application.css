@@ -393,5 +393,32 @@ a.btn:active {
   margin-left: 42%;
 }
 
+/*>>>>> syling for users summary page <<<<<*/
+
+#user-summary-hdr {
+  margin-left: 13%;
+  margin-top: 5%;
+}
+
+#user-summary-cohort-hdr {
+  margin-left: 63%;
+  margin-bottom: 2%;
+}
+
+#user-summary-image {
+  margin-left: 33%;
+  margin-bottom: 10%
+}
+
+#user-weekly-progress-hdr {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#user-summary-table-btn {
+  text-align: center;
+}
+
+
 
 
