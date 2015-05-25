@@ -83,13 +83,17 @@
       <% unless user.week_scores(current_week)[day].nil? %>
       <td id="cohort-score-btn"> 
         <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> 
-        <button type="button" class="btn btn-success">
-          <% if user.week_scores(current_week)[day] <= 0 %>
-          <%= user.week_scores(current_week)[day] %>
-          <% else %>
-          +<%= user.week_scores(current_week)[day] %>
-          <% end %> 
+          <% if user.week_scores(current_week)[day] < 0 %>
+          <button type="button" class="btn btn-danger">
+            <%= user.week_scores(current_week)[day] %>
           </button>
+          <% elsif user.week_scores(current_week)[day] > 0 %>
+          <button type="button" class="btn btn-success">
+            +<%= user.week_scores(current_week)[day] %>
+          </button>
+          <% else %>
+          <button type="button" class="btn btn-info">0</button>
+          <% end %> 
         </a>
       </td> 
       <% else %>

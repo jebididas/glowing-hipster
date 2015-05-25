@@ -18,12 +18,17 @@
     <% user.plusones.each do |p_one| %>
     <td id="table-score-data">
       <a href="/plusones">
-        <button type="button" class="btn btn-success">
           <em><strong>
             <% if p_one.score < 0 %>
+            <button type="button" class="btn btn-danger">
               <%= p_one.score %>
-            <% else %>
+              </button>
+            <% elsif p_one.score > 0 %>
+            <button type="button" class="btn btn-success">
               +<%= p_one.score %>
+              </button>
+              <% else %>
+              <button type="button" class="btn btn-info">0</button>
             <% end %>
           </strong></em>
         </button>
