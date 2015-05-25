@@ -1,4 +1,5 @@
 helpers do
+
   def current_user
     @current_user ||= User.find session[:user_id] if session[:user_id]
   end
@@ -8,7 +9,11 @@ helpers do
   end
 
   def current_week
-    current_date.strftime("%U").to_i
+    current_date.strftime("%U").to_i + session[:week_num]
+  end
+
+  def change_week(offset)
+    session[:week_num] += offset
   end
 end
 
@@ -46,6 +51,7 @@ post '/login' do
     if params[:password] == @user.password
       session[:user_id] = @user.id
     end
+    session[:week_num] = 0
   end
   redirect '/'
   # redirect '/user/:id'
@@ -53,11 +59,24 @@ end
 
 get '/logout' do
   session.delete :user_id
+  session.delete :week_num
   redirect '/'
 end
 
 get '/users/:id' do
   @user = User.find params[:id]
+  erb :'users/summary'  
+end
+
+get '/users/:id/prev_week' do
+  @user = User.find params[:id]
+  change_week(-1) 
+  erb :'users/summary'  
+end
+
+get '/users/:id/next_week' do
+  @user = User.find params[:id]
+  change_week(1)
   erb :'users/summary'  
 end
 
@@ -157,6 +176,18 @@ end
 get '/cohorts/:id/index' do
   @cohort = Cohort.find params[:id]
   erb :'cohorts/index'  
+end
+
+get '/cohorts/:id/index/prev_week' do
+  @cohort = Cohort.find params[:id]
+  change_week(-1)
+  erb :'cohorts/index'
+end
+
+get '/cohorts/:id/index/next_week' do
+  @cohort = Cohort.find params[:id]
+  change_week(1)
+  erb :'cohorts/index'
 end
 
 get '/cohorts/:id/:date' do
