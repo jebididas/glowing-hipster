@@ -101,7 +101,7 @@ get '/upload' do
   end
 end
 
-post "/users/upload" do 
+post '/upload' do 
   File.open("public/images/users/#{current_user.id}/" + "default-user.png", "w") do |f|
     f.write(params[:myfile][:tempfile].read)
   end
