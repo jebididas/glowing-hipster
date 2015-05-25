@@ -292,6 +292,7 @@ a.btn:active {
   margin-top: 5%;
 }
 
+
 /*>>>>> style for cohorts user table <<<<<*/
 
 #cohorts-user-activities {
@@ -323,6 +324,13 @@ a.btn:active {
 
 #cohort-winner-loser {
   margin-left: 16%;
+}
+
+#click-plus-one {
+  font-family: Amita;
+  font-size: 18px;
+  color: lightblue;
+  margin-top:15%;
 }
 
 
