@@ -1,11 +1,14 @@
+<div class="well well-lg" id="cohorts-hdr-background">
   <h2 id="cohorts-main-hdr"> <%= @cohort.name %> </h2>
+</div>
 
 <hr>
-<h3>List of today's acitivities</h3>
+
+<h3 id="cohorts-hdr-activities">List of today's acitivities</h3>
 
 <div class="row">
   <% @cohort.all_users_plusones_sorted_by_time(current_date).last(6).each do |plusone| %>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
       <% if plusone.score > 0 %>
       <div class="panel panel-success">
         <div class="panel-heading"><%= plusone.user.username %> +<%= plusone.score %></div>
@@ -30,7 +33,7 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4" id="cohort-winner-loser">
     <div class="thumbnail">
       <img src="/images/users/<%= @cohort.weekly_best(current_week).id %>/default-user.png" alt="best">
       <div class="caption">

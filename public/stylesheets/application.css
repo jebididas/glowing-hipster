@@ -294,30 +294,35 @@ a.btn:active {
 
 /*>>>>> style for cohorts user table <<<<<*/
 
-#cohorts-user-score {
-  text-align: center;
+#cohorts-user-activities {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 410px;
 }
 
-#weekly-win-loss {
-  font-size: 20px;
-  margin-left: 5%;
+#cohorts-hdr-activities {
+  margin-left: 1%;
 }
 
 #cohorts-main-hdr {
-  font-size: 30px;
+  text-align: center;
+  margin-bottom: 2%;
+  text-shadow: 2px 2px #FFFFFF;
   font-weight: bolder;
-  margin-left: 5%;
 }
 
-#cohorts-hdr {
-  font-size: 25px;
-  font-weight: bold;
-  margin-left: 5%;
+#cohorts-hdr-background {
+  background-image: url("../images/cohort-header-background.jpg");
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 5px;
 }
 
-#cohorts-activities {
-  margin-left: 5%;
-  font-size: 16px;
+#cohort-winner-loser {
+  margin-left: 16%;
 }
 
 
