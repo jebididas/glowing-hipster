@@ -27,5 +27,6 @@
     </div>
   <% end %> 
 </div>
-
-<p><a href="/users/<%=@user.id%>/plusones/<%= @date.strftime("%y%m%d")%>/update"> update </a></p>
+<% if current_user.id == @user.id %>
+  <p><a href="/users/<%=@user.id%>/plusones/<%= @date.strftime("%y%m%d")%>/update"> update </a></p>
+<% end %>
