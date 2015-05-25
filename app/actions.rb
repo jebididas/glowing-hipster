@@ -14,7 +14,12 @@ end
 
 # Homepage (Root path)
 get '/' do
-  erb :'index'
+  if current_user
+    @user = current_user
+    erb :'users/summary' 
+  else
+    erb :'index'
+  end
 end
 
 post '/' do # Register new user
@@ -68,15 +73,17 @@ post '/plusones/new' do
   # @activity = Activity.create(
   #   description: params[:description],
   #   plusone_id: @plusone.id)
-  if @plusone.save
-    redirect '/plusones'
-  else
-    redirect '/plusones/new'
-  end
+if @plusone.save
+  redirect '/plusones'
+else
+  redirect '/plusones/new'
+end
 end
 
 get '/plusones' do
   if current_user
+    @cohort = Cohort.find params[:id]
+    @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
     erb :'/plusones/index'
   else
     redirect '/login'
@@ -118,7 +125,7 @@ post '/users/edit' do
     if current_user.save
       redirect '/'
     else
-      redirect '/users/edit'
+      redirect "/users/#{current_user.id}/edit"
     end
   else
     redirect '/login'
