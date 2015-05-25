@@ -322,8 +322,15 @@ a.btn:active {
   border-radius: 5px;
 }
 
-#cohort-winner-loser {
+#cohort-winner {
   margin-left: 16%;
+  max-height: 500px;
+  max-width: 500px;
+}
+
+#cohort-loser {
+  max-height: 500px;
+  max-width: 500px;
 }
 
 #click-plus-one {
@@ -333,6 +340,35 @@ a.btn:active {
   margin-top:15%;
 }
 
+#winner-image {
+  height: 200px;
+  width: 200px;
+}
+
+#loser-image {
+  height: 200px;
+  width: 200px;
+}
+
+#cohort-username {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#win-lose-hdr {
+  text-align: center;
+}
+
+#cohort-score-btn {
+  text-align: center;
+}
+
+/*#win-lose-btn {
+  text-align: center;
+  width: 150px;
+  margin-left: 55%;
+}*/
 
 
 
