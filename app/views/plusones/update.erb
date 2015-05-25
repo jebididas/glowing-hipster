@@ -1,7 +1,7 @@
 <% @body_class = "new" %>
 
 <div class="new-plusone">
-  <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= @date.strftime("%A") %></h2>
+  <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= @date.strftime("%A, %b %e") %></h2>
   <form method="post" action="/users/<%=@user.id%>/plusones/<%=@date.strftime("%y%m%d")%>/update">
     <textarea class="form-control" name="description" id="new-plusone-textarea" rows="10" placeholder="Leave a comment about your workout or your dietary guilty pleasure..." ></textarea>
     <input type="hidden" name="date" value="#{@date}">

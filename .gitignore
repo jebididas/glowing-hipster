@@ -3,3 +3,4 @@ app/.DS_Store
 app/views/users/.DS_Store
 .DS_Store
 app/views/.DS_Store
+db/db.sqlite3
