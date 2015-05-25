@@ -69,8 +69,3 @@
 <!-- <p> <%= @user.week_scores(current_week) %> </p> -->
 <p><a href="/users/<%=@user.id%>/prev_week"> prev </a></p>
 <p><a href="/users/<%=@user.id%>/next_week"> next </a></p>
-
-<h3> Cohorts </h3>
-<% @user.cohorts.each do |cohort|%>
-  <p><a href="/cohorts/<%= cohort.id %>/index"> <%=cohort.name%> </p>
-<% end %>
