@@ -258,7 +258,7 @@ th {
   background-color: #CFCFCF;
 }
 
-a.btn:link { 
+/*a.btn:link { 
   color: #fff; 
 }
 
@@ -274,7 +274,7 @@ a.btn:hover {
 
 a.btn:active {
   color: #0000FF;
-}
+}*/
 
 #table-style {
   border-radius: 10px;
