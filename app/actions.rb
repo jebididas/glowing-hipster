@@ -9,11 +9,15 @@ helpers do
   end
 
   def current_week
-    current_date.strftime("%U").to_i + session[:week_num]
+    if session[:week_num]
+      current_date.strftime("%U").to_i + session[:week_num]
+    end
   end
 
   def change_week(offset)
-    session[:week_num] += offset
+    if session[:week_num]
+      session[:week_num] += offset
+    end
   end
 end
 
@@ -92,11 +96,11 @@ post '/plusones/new' do
   # @activity = Activity.create(
   #   description: params[:description],
   #   plusone_id: @plusone.id)
-  if @plusone.save
-    redirect "/users/#{current_user.id}"
-  else
-    redirect '/plusones/new'
-  end
+if @plusone.save
+  redirect "/users/#{current_user.id}"
+else
+  redirect '/plusones/new'
+end
 end
 
 get '/users/:id/plusones/:date' do
