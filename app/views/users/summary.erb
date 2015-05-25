@@ -5,13 +5,13 @@
   </div>
   <% @user.cohorts.each do |cohort|%>
   <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
-      <a href="/cohorts/<%= cohort.id %>/index">
-       <button class="btn btn-info" id="new-plusone-btn">
-        <%= cohort.name %>
-        </button>
-      </a>
-  </div>
-  <% end %>
+    <a href="/cohorts/<%= cohort.id %>/index">
+     <button class="btn btn-info" id="new-plusone-btn">
+      <%= cohort.name %>
+    </button>
+  </a>
+</div>
+<% end %>
 </div>
 
 <div>
@@ -43,6 +43,21 @@
 </div>
 <hr>
 <h3 id="user-weekly-progress-hdr">User Weekly Progress</h3>
+
+<div id="week-changer-buttons">
+<div class="btn-group" role="group">
+    <a href="/users/<%=@user.id%>/prev_week" class="btn btn-info" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+     <a href="/users/<%=@user.id%>" class="btn btn-info" role="button">
+      Current Week
+    </a>
+    <a href="/users/<%=@user.id%>/next_week" class="btn btn-info" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>
+
 <div class="table-responsive" id="table-style">
   <table class="table">
     <tr>
@@ -57,15 +72,13 @@
       <% for day in 0..6 do %>
       <td id="user-summary-table-btn"><a href="/users/<%=@user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>">
        <button type="button" class="btn btn-success">
-      <%= @user.week_scores(current_week)[day] %>
+        <%= @user.week_scores(current_week)[day] %>
       </button>
-      </a>
-      </td> 
-        <% end %>
-      <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
-    </tr>
-  </table>
+    </a>
+  </td> 
+  <% end %>
+  <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
+</tr>
+</table>
 </div>
 <!-- <p> <%= @user.week_scores(current_week) %> </p> -->
-<p><a href="/users/<%=@user.id%>/prev_week"> prev </a></p>
-<p><a href="/users/<%=@user.id%>/next_week"> next </a></p>

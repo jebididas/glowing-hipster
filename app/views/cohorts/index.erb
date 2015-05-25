@@ -60,7 +60,21 @@
     </div>
   </div>
 </div>
+
 <hr>
+<div id="week-changer-buttons">
+<div class="btn-group" role="group">
+    <a href="/cohorts/<%=@cohort.id%>/index/prev_week" class="btn btn-info" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+     <a href="/cohorts/<%=@cohort.id%>/index" class="btn btn-info" role="button">
+      Current Week
+    </a>
+    <a href="/cohorts/<%=@cohort.id%>/index/next_week" class="btn btn-info" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>
 <div class="table-responsive" id="table-style">
   <table class="table">
     <tr>
@@ -110,6 +124,3 @@
     <% end %>
   </table>
 </div>
-
-<p><a href="/cohorts/<%=@cohort.id%>/index/prev_week"> prev </a></p>
-<p><a href="/cohorts/<%=@cohort.id%>/index/next_week"> next </a></p>
