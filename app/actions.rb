@@ -125,23 +125,20 @@ post '/users/edit' do
   end
 end
 
-get '/plusones/update' do
-  @user = User.first # will be changed later
-  # @plusones = @user.plusones
+get '/users/:id/plusones/:date/update' do
+  @user = User.find params[:id] # will be changed later
+  @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
   erb :'/plusones/update'
 end
 
-post '/plusones/update' do
-
+post '/users/:id/plusones/:date/update' do
+  date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
   @plusone = Plusone.create(
     score: params[:score],
-    user_id: current_user.id)
-  @activity = Activity.create(
-    description: params[:description],
-    plusone_id: @plusone.id)
-  if @plusone.save && @activity.save
-    redirect '/plusones'
-  end
+    user_id: current_user.id,
+    p_date: date,
+    description: params[:description])
+  redirect '/' if @plusone.save
 end
 
 get '/cohorts/new' do

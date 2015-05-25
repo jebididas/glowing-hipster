@@ -19,11 +19,12 @@
   <p> <%= plusone.user.username %> </p>
   <p> Description: <%= plusone.description %> </p>
   <p> Created at: <%= plusone.created_at %> </p>
+  <p> Date: <%= plusone.p_date %> </p>
 <% end %> 
 
 <hr>
-<p> Best of the week: <%= @cohort.weekly_best(current_week) %> </p>
-<p> Worst of the week: <%= @cohort.weekly_worst(current_week) %> </p>
+<p> Best of the week: <%= @cohort.weekly_best(current_week).username %> </p>
+<p> Worst of the week: <%= @cohort.weekly_worst(current_week).username %> </p>
 
 <hr>
 <div class="table-responsive" id="table-style">
@@ -39,11 +40,7 @@
       <tr>
         <th> <%= user.username %> </th>
           <% for day in 0..6 do %>
-            <% unless user.week_scores(current_week)[day].nil? %>
               <td> <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= user.week_scores(current_week)[day] %> </a></th> 
-            <% else %>
-              <td> - </td> 
-            <% end %>
           <% end %>
         <th> <%= user.weekly_total_score(current_week) %> </th>
       </tr>
