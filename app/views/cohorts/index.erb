@@ -4,8 +4,6 @@
 
 <hr>
 
-<h3 id="cohorts-hdr-activities">List of today's acitivities</h3>
-
 <div class="row">
   <% @cohort.all_users_plusones_sorted_by_time(current_date).last(6).each do |plusone| %>
     <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
@@ -77,6 +75,7 @@
       <th>Total</th>
     </tr>
     <% @cohort.users.each do |user| %>  
+
     <tr>
       <th> <%= user.username %> </th>
       <% for day in 0..6 do %>

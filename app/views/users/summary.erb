@@ -29,11 +29,7 @@
     <tr>
       <th> Score </th>
         <% for day in 0..6 do %>
-          <% unless @user.week_scores(current_week)[day] == 0 %>
             <td> <%= @user.week_scores(current_week)[day] %> </th> 
-          <% else %>
-            <td> - </td> 
-          <% end %>
         <% end %>
       <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
     </tr>

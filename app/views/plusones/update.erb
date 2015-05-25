@@ -1,21 +1,19 @@
 <% @body_class = "new" %>
 
 <div class="new-plusone">
-  <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= current_date.strftime("%A") %></h2>
-  <form method="post" action="/plusones/new">
-    <!-- <input type="number" name="score" class="form-control new-score" id="new-plusone-input" placeholder="Score" aria-describedby="basic-addon1">
-  -->    <textarea class="form-control" id="new-plusone-textarea" rows="3" placeholder="Leave a comment about your workout or your dietary guilty pleasure..." maxlength="150"></textarea>
-  <button class="btn btn-success" id="new-plusone-btn" type="submit">Feeling pumped!</button>
-  <br>
-  <button class="btn btn-danger" id="new-plusone-btn" type="submit">Moment of weakness!</button>
+  <h2 id="new-hdr">Update <span class="main-color">+1</span> for <%= @date.strftime("%A") %></h2>
+  <form method="post" action="/users/<%=@user.id%>/plusones/<%=@date.strftime("%y%m%d")%>/update">
+    <textarea class="form-control" name="description" id="new-plusone-textarea" rows="10" placeholder="Leave a comment about your workout or your dietary guilty pleasure..." ></textarea>
+    <input type="hidden" name="date" value="#{@date}">
+    <button class="btn btn-success" name="score" value="1" id="new-plusone-btn" type="submit">Feeling pumped!</button>
+    <br>
+    <button class="btn btn-danger" name="score" value="-1" id="new-plusone-btn" type="submit">Moment of weakness!</button>
 </form>
 </div>
 
-<% @user.plusones_sorted_by_time(Date.today.prev_day).each do |plusone|%>
+<% @user.plusones_sorted_by_time(@date).each do |plusone|%>
 <div id="return-posts">
   <p id="post-info"><%= plusone.description %> <strong><%= plusone.score %></strong></p>
-  <p id="post-info">Date: <%= plusone.created_at.strftime("%A") %> </p>
+  <p id="post-info">Created on: <%= plusone.p_date.strftime("%A") %> </p>
 </div>
 <% end %>
-
-  <!--  <p id="test"> <%= @user.plusones.first.activity.description %></p> -->

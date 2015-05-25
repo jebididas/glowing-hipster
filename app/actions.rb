@@ -14,7 +14,12 @@ end
 
 # Homepage (Root path)
 get '/' do
-  erb :'index'
+  if current_user
+    @user = current_user
+    erb :'users/summary' 
+  else
+    erb :'index'
+  end
 end
 
 post '/' do # Register new user
@@ -68,15 +73,17 @@ post '/plusones/new' do
   # @activity = Activity.create(
   #   description: params[:description],
   #   plusone_id: @plusone.id)
-  if @plusone.save
-    redirect '/plusones'
-  else
-    redirect '/plusones/new'
-  end
+if @plusone.save
+  redirect '/plusones'
+else
+  redirect '/plusones/new'
+end
 end
 
 get '/plusones' do
   if current_user
+    @cohort = Cohort.find params[:id]
+    @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
     erb :'/plusones/index'
   else
     redirect '/login'
@@ -118,30 +125,27 @@ post '/users/edit' do
     if current_user.save
       redirect '/'
     else
-      redirect '/users/edit'
+      redirect "/users/#{current_user.id}/edit"
     end
   else
     redirect '/login'
   end
 end
 
-get '/plusones/update' do
-  @user = User.first # will be changed later
-  # @plusones = @user.plusones
+get '/users/:id/plusones/:date/update' do
+  @user = User.find params[:id] # will be changed later
+  @date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
   erb :'/plusones/update'
 end
 
-post '/plusones/update' do
-
+post '/users/:id/plusones/:date/update' do
+  date = Date.strptime("{#{params[:date]}}", "{%y%m%d}")
   @plusone = Plusone.create(
     score: params[:score],
-    user_id: current_user.id)
-  @activity = Activity.create(
-    description: params[:description],
-    plusone_id: @plusone.id)
-  if @plusone.save && @activity.save
-    redirect '/plusones'
-  end
+    user_id: current_user.id,
+    p_date: date,
+    description: params[:description])
+  redirect '/' if @plusone.save
 end
 
 get '/cohorts/new' do
