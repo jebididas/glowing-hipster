@@ -33,28 +33,28 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-sm-6 col-md-4" id="cohort-winner-loser">
+  <div class="col-sm-6 col-md-4" id="cohort-winner">
     <div class="thumbnail">
-      <img src="/images/users/<%= @cohort.weekly_best(current_week).id %>/default-user.png" alt="best">
+      <img id="winner-image" src="/images/users/<%= @cohort.weekly_best(current_week).id %>/default-user.png" alt="best">
       <div class="caption">
-        <h3>Best of the week</h3>
-        <p><%= @cohort.weekly_best(current_week).username %></p>
+        <h3 id="win-lose-hdr">Most active for the week!</h3>
+        <p id="cohort-username"><%= @cohort.weekly_best(current_week).username %></p>
         <p>
-          <a href="/users/<%= @cohort.weekly_best(current_week).id %>" class="btn btn-primary" role="button">
+          <a href="/users/<%= @cohort.weekly_best(current_week).id %>" class="btn btn-primary" role="button" id="win-loss-btn">
             <%= @cohort.weekly_best(current_week).username %>
           </a>
         </p>
       </div>
     </div>
   </div>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4" id="cohort-loser">
     <div class="thumbnail">
-      <img src="/images/users/<%= @cohort.weekly_worst(current_week).id %>/default-user.png" alt="worst">
+      <img id="loser-image" src="/images/users/<%= @cohort.weekly_worst(current_week).id %>/default-user.png" alt="worst">
       <div class="caption">
-        <h3>Worst of the week</h3>
-        <p><%= @cohort.weekly_worst(current_week).username %></p>
+        <h3 id="win-lose-hdr">Least active for the week!</h3>
+        <p id="cohort-username"><%= @cohort.weekly_worst(current_week).username %></p>
         <p>
-          <a href="/users/<%= @cohort.weekly_worst(current_week).id %>" class="btn btn-primary" role="button">
+          <a href="/users/<%= @cohort.weekly_worst(current_week).id %>" class="btn btn-primary" role="button" id="win-loss-btn">
             <%= @cohort.weekly_worst(current_week).username %>
           </a>
         </p>
@@ -81,13 +81,15 @@
       <th> <%= user.username %> </th>
       <% for day in 0..6 do %>
       <% unless user.week_scores(current_week)[day].nil? %>
-      <td> 
+      <td id="cohort-score-btn"> 
         <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> 
+        <button type="button" class="btn btn-success">
           <% if user.week_scores(current_week)[day] <= 0 %>
           <%= user.week_scores(current_week)[day] %>
           <% else %>
           +<%= user.week_scores(current_week)[day] %>
           <% end %> 
+          </button>
         </a>
       </td> 
       <% else %>
