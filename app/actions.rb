@@ -105,7 +105,7 @@ post '/upload' do
   File.open("public/images/users/#{current_user.id}/" + "default-user.png", "w") do |f|
     f.write(params[:myfile][:tempfile].read)
   end
-  redirect '/users/:id/edit'
+  redirect "/users/#{current_user.id}"
 end
 
 
