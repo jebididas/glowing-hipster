@@ -7,7 +7,11 @@
   </div>
   <% @user.cohorts.each do |cohort|%>
   <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
-    <button href="/cohorts/<%= cohort.id %>/index" class="btn btn-info" id="new-plusone-btn"><%=cohort.name%></button>
+      <a href="/cohorts/<%= cohort.id %>/index">
+       <button class="btn btn-info" id="new-plusone-btn">
+        <%= cohort.name %>
+        </button>
+      </a>
   </div>
   <% end %>
 </div>
