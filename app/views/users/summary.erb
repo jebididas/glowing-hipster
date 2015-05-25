@@ -31,7 +31,7 @@
         <% for day in 0..6 do %>
             <td> <%= @user.week_scores(current_week)[day] %> </th> 
         <% end %>
-      <td> <%= @user.weekly_total_score(current_week) %> </td>
+      <td id="table-username"> <%= @user.weekly_total_score(current_week) %> </td>
     </tr>
   </table>
 </div>

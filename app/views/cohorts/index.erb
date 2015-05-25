@@ -1,49 +1,108 @@
-<h2> <%= @cohort.name %> </h2>
-
-<!-- <div>
-  <% @cohort.users.each do |user| %>
-  <table>
-    <% user.plusones_sorted_by_time(current_date).each do |plusone|%>
-      <tr>
-      <td id="post-info"> <%= user.username %> </td>
-      <td id="post-info"> <%= plusone.description %> </td>
-      <th id="post-info"> <%= plusone.score %> </th>
-      </tr>
-    <% end %>
-  </table>
-  <% end %>
-</div> -->
-<hr>
-<h3> List of today's acitivities </h3>
-<% @cohort.all_users_plusones_sorted_by_time(current_date).each do |plusone|%>
-  <p> <%= plusone.user.username %> </p>
-  <p> Description: <%= plusone.description %> </p>
-  <p> Created at: <%= plusone.created_at %> </p>
-  <p> Date: <%= plusone.p_date %> </p>
-<% end %> 
+<div class="well well-lg" id="cohorts-hdr-background">
+  <h2 id="cohorts-main-hdr"> <%= @cohort.name %> </h2>
+</div>
 
 <hr>
-<p> Best of the week: <%= @cohort.weekly_best(current_week).username %> </p>
-<p> Worst of the week: <%= @cohort.weekly_worst(current_week).username %> </p>
 
+<div class="row">
+  <% @cohort.all_users_plusones_sorted_by_time(current_date).last(6).each do |plusone| %>
+    <div class="col-sm-6 col-md-4" id="cohorts-user-activities">
+      <% if plusone.score > 0 %>
+      <div class="panel panel-success">
+        <div class="panel-heading"><%= plusone.user.username %> +<%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% elsif plusone.score < 0 %>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% else %>
+      <div class="panel panel-info">
+        <div class="panel-heading"><%= plusone.user.username %> <%= plusone.score %></div>
+        <p>Description: <%= plusone.description %></p>
+        <p>Created at: <%= plusone.created_at.strftime("%b %e at %l:%m %p") %></p>
+      </div>
+      <% end %>
+    </div>
+  <% end %> 
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-6 col-md-4" id="cohort-winner">
+    <div class="thumbnail">
+      <img id="winner-image" src="/images/users/<%= @cohort.weekly_best(current_week).id %>/default-user.png" alt="best">
+      <div class="caption">
+        <h3 id="win-lose-hdr">Most active for the week!</h3>
+        <p id="cohort-username"><%= @cohort.weekly_best(current_week).username %></p>
+        <p>
+          <a href="/users/<%= @cohort.weekly_best(current_week).id %>" class="btn btn-primary" role="button" id="win-loss-btn">
+            <%= @cohort.weekly_best(current_week).username %>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-6 col-md-4" id="cohort-loser">
+    <div class="thumbnail">
+      <img id="loser-image" src="/images/users/<%= @cohort.weekly_worst(current_week).id %>/default-user.png" alt="worst">
+      <div class="caption">
+        <h3 id="win-lose-hdr">Least active for the week!</h3>
+        <p id="cohort-username"><%= @cohort.weekly_worst(current_week).username %></p>
+        <p>
+          <a href="/users/<%= @cohort.weekly_worst(current_week).id %>" class="btn btn-primary" role="button" id="win-loss-btn">
+            <%= @cohort.weekly_worst(current_week).username %>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 <hr>
 <div class="table-responsive" id="table-style">
   <table class="table">
-      <tr>
-        <th> Date </th>
-          <% for day in 0..6 do%>
-            <th><a href="/cohorts/<%= @cohort.id %>/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %></a> </th>
-          <% end %>
-        <th> Total </th>
-      </tr>
+    <tr>
+      <th>Date</th>
+      <% for day in 0..6 do%>
+      <th>
+        <a href="/cohorts/<%= @cohort.id %>/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> 
+          <%= Date.commercial(2015, current_week, day + 1).strftime("%B %d") %>
+        </a> 
+      </th>
+      <% end %>
+      <th>Total</th>
+    </tr>
     <% @cohort.users.each do |user| %>  
-      <tr>
-        <th> <%= user.username %> </th>
-          <% for day in 0..6 do %>
-              <td> <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> <%= user.week_scores(current_week)[day] %> </a></th> 
-          <% end %>
-        <th> <%= user.weekly_total_score(current_week) %> </th>
-      </tr>
+
+    <tr>
+      <th> <%= user.username %> </th>
+      <% for day in 0..6 do %>
+      <% unless user.week_scores(current_week)[day].nil? %>
+      <td id="cohort-score-btn"> 
+        <a href="/users/<%=user.id%>/plusones/<%= Date.commercial(2015, current_week, day + 1).to_date.strftime("%y%m%d") %>"> 
+        <button type="button" class="btn btn-success">
+          <% if user.week_scores(current_week)[day] <= 0 %>
+          <%= user.week_scores(current_week)[day] %>
+          <% else %>
+          +<%= user.week_scores(current_week)[day] %>
+          <% end %> 
+          </button>
+        </a>
+      </td> 
+      <% else %>
+      <td> - </td> 
+      <% end %>
+      <% end %>
+      <th> 
+        <% if user.weekly_total_score(current_week) <= 0 %>
+        <%= user.weekly_total_score(current_week) %>
+        <% else %>
+        +<%= user.weekly_total_score(current_week) %>
+        <% end %> 
+      </th>
+    </tr>
     <% end %>
   </table>
 </div>

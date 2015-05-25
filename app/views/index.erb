@@ -1,8 +1,3 @@
-<% if current_user %>
-<% @body_class = "results" %>
-<%= erb :'/plusones/index' %>
-<% else %>
-
 <% @body_class = "index" %>
 <br>
 <div class="input-group-box">
@@ -25,8 +20,6 @@
     <br>
     <button class="btn btn-primary" id="index-register-button" type="submit">Register</button>
   </form>
-  <p id="index-intro"> Create a FREE profile at +1 Health today, to help you become the healthy person you want to be!  If you are already a member Login here!</p>
-  <button class="btn btn-primary" id="index-login-button" type="submit">Login</button>
+  <p id="index-intro"> Create a FREE profile at +1 Health today, to help you become the healthy person you want to be!  If you are already a member <a href="/login"><strong> Login here! </strong></a></p>
+  <!-- <button class="btn btn-primary" id="index-login-button" type="submit">Login</button> -->
 </div>
-
-<% end %>
